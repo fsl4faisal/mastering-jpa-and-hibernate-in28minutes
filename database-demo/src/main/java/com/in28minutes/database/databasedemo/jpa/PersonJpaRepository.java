@@ -19,6 +19,24 @@ public class PersonJpaRepository {
         return entityManager.find(Person.class, id);
     }
 
+    public Person update(Person person) {
+        return entityManager.merge(person);
+    }
+
+    public Person insert(Person person) {
+        return entityManager.merge(person);
+    }
+
+    public void deleteById(int id) {
+        var person = findById(id);
+        entityManager.remove(person);
+    }
+
+    public List<Person> findAll() {
+        var namedQuery = entityManager.createNamedQuery("find_all", Person.class);
+        return namedQuery.getResultList();
+    }
+
 //    public List<Person> findAll() {
 //        return entityManager.find(Person.class,);
 //    }

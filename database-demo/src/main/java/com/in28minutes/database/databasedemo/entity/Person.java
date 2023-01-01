@@ -3,6 +3,7 @@ package com.in28minutes.database.databasedemo.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.Getter;
@@ -12,9 +13,10 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name="PERSON")
+@Table(name = "PERSON")
 @Getter
 @Setter
+@NamedQuery(name = "find_all", query = "select p from Person p")
 public class Person {
 
     @Id

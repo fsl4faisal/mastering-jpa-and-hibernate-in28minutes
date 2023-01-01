@@ -27,14 +27,15 @@ public class JpaDemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        //LOG.info("All users->{}", personJpaRepository.findAll());
+        LOG.info("All users->{}", personJpaRepository.findAll());
         var person = personJpaRepository.findById(10001);
         LOG.info("User id 10001->{}", person);
-//        LOG.info("Deleting 10002-> No of rows deleted- {}", dao.deleteById(10002));
-//        LOG.info("Inserting 10004 ->", dao.insert(new Person("Faisal", "Gopalganj", Date.valueOf("2012-12-12"))));
-//        person.setName("updated-faisal");
-//        person.setLocation("Siwan");
-//        LOG.info("Updating 10001 -> ", dao.update(person));
-//        LOG.info("All users->{}", dao.findAll());
+        personJpaRepository.deleteById(10002);
+        LOG.info("After deletion : All users->{}", personJpaRepository.findAll());
+        LOG.info("Inserting 10004 ->", personJpaRepository.insert(new Person("Faisal", "Gopalganj", Date.valueOf("2012-12-12"))));
+        person.setName("updated-faisal");
+        person.setLocation("Siwan");
+        LOG.info("Updating 10001 -> ", personJpaRepository.update(person));
+        LOG.info("All users->{}", personJpaRepository.findAll());
     }
 }
